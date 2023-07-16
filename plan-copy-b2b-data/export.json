@@ -4,7 +4,7 @@
             "operation": "Upsert",
             "externalId": "Name",
             "master": true,
-            "query": "SELECT Id,Name,CurrencyIsoCode,DefaultLanguage,Country,OrderActivationStatus,OrderLifeCycleType,Plant__c,StrikethroughPricebookId,PricingStrategy,SortByPricebookId,SupportedCurrencies,SupportedLanguages,WebShop_Id_For_Shipping_Service__c FROM WebStore"
+            "query": "SELECT Id,Name,CurrencyIsoCode,DefaultLanguage,Country,OrderActivationStatus,OrderLifeCycleType,StrikethroughPricebookId,PricingStrategy,SortByPricebookId,SupportedCurrencies,SupportedLanguages FROM WebStore"
         },
         {
             "operation": "Upsert",
@@ -17,7 +17,7 @@
             "externalId": "Name",
             "master": true,
             "deleteOldData": true,
-            "query": "SELECT External_Id__c, CurrencyIsoCode, Description, IsNavigational, Name, SortOrder, ParentCategoryId, CatalogId, Id FROM ProductCategory"
+            "query": "SELECT CurrencyIsoCode, Description, IsNavigational, Name, SortOrder, ParentCategoryId, CatalogId, Id FROM ProductCategory"
         },
         {
             "operation": "Upsert",
@@ -30,19 +30,19 @@
             "operation": "Upsert",
             "externalId": "Pricebook2Id;Product2Id;CurrencyIsoCode",
             "deleteOldData": true,
-            "query": "SELECT External_Id__c, recommended_Retail_Price__c, CurrencyIsoCode, IsActive, UnitPrice, UseStandardPrice, Pricebook2Id, Product2Id, Id FROM PricebookEntry"
+            "query": "SELECT CurrencyIsoCode, IsActive, UnitPrice, UseStandardPrice, Pricebook2Id, Product2Id, Id FROM PricebookEntry"
         },
         {
             "operation": "Insert",
             "master": true,
             "deleteOldData": true,
-            "query": "SELECT Type,ProductClass,Article_Number__c, Business_Category__c, Collection_Period__c, Color_Code__c, Composition_1__c, Composition_2__c, Composition_3__c, Country_of_Origin__c, EAN_Code__c, External_Id__c, Item_Number__c, Next_Availability_Date__c, Product_Type__c, Stock_Quantity__c, Style__c, Tariff_Code__c, Type__c, CurrencyIsoCode, Description, DisplayUrl, ExternalId, Family, IsActive, Name, ProductCode, QuantityUnitOfMeasure, StockKeepingUnit, Id FROM Product2 order by ProductClass"
+            "query": "SELECT Type,ProductClass, CurrencyIsoCode, Description, DisplayUrl, ExternalId, Family, IsActive, Name, ProductCode, QuantityUnitOfMeasure, StockKeepingUnit, Id FROM Product2 order by ProductClass"
         },
         {
             "operation": "Upsert",
             "externalId": "Name",
             "deleteOldData": true,
-            "query": "SELECT External_Id__c, External_ProductId__c, CurrencyIsoCode, IsPrimaryCategory, ProductId, ProductCategoryId, Id FROM ProductCategoryProduct"
+            "query": "SELECT CurrencyIsoCode, IsPrimaryCategory, ProductId, ProductCategoryId, Id FROM ProductCategoryProduct"
         },
         {
             "operation": "Upsert",
@@ -55,13 +55,13 @@
             "operation": "Readonly"
         },
         {
-            "query": "SELECT Color__c, External_Id__c, External_Variant_Parent_Id__c, External_ProductId__c, Size__c, Sequence, ProductId, VariantParentId FROM ProductAttribute",
+            "query": "SELECT Sequence, ProductId, VariantParentId FROM ProductAttribute",
             "deleteOldData": true,
             "master": false,
             "operation": "Insert"
         },
         {
-            "query": "SELECT External_Id__c, External_ProductId__c, ProductAttributeSetId, ProductId FROM ProductAttributeSetProduct",
+            "query": "SELECT ProductAttributeSetId, ProductId FROM ProductAttributeSetProduct",
             "deleteOldData": true,
             "master": false,
             "operation": "Insert"
@@ -91,7 +91,7 @@
             "externalId": "Name"
         },
         {
-            "query": "Select Id, Role,Name,Description,Business_category__c,Discount_Percentage__c from BuyerGroup",
+            "query": "Select Id, Role,Name,Description from BuyerGroup",
             "deleteOldData": true,
             "operation": "Upsert",
             "externalId": "Name"
