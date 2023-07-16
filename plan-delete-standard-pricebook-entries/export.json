@@ -1,0 +1,26 @@
+{
+    "objects": [
+        {
+            "query": "SELECT Id FROM pricebookentry where Pricebook2.IsStandard = true",
+            "operation": "Delete"
+        }
+    ],
+    "pollingIntervalMs": 5000,
+    "bulkThreshold": 200,
+    "bulkApiVersion": "1.0",
+    "concurrencyMode": "Serial",
+    "bulkApiV1BatchSize": 9500,
+    "keepObjectOrderWhileExecute": false,
+    "allOrNone": false,
+    "promptOnUpdateError": true,
+    "promptOnMissingParentObjects": false,
+    "promptOnIssuesInCSVFiles": false,
+    "validateCSVFilesOnly": false,
+    "apiVersion": "58.0",
+    "createTargetCSVFiles": true,
+    "importCSVFilesAsIs": false,
+    "alwaysUseRestApiToUpdateRecords": false,
+    "excludeIdsFromCSVFiles": false,
+    "fileLog": true,
+    "allowFieldTruncation": false
+}

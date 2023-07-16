@@ -1,0 +1,130 @@
+{
+    "objects": [
+        {
+            "operation": "Upsert",
+            "externalId": "Name",
+            "master": true,
+            "query": "SELECT Id,Name,CurrencyIsoCode,DefaultLanguage,Country,OrderActivationStatus,OrderLifeCycleType,Plant__c,StrikethroughPricebookId,PricingStrategy,SortByPricebookId,SupportedCurrencies,SupportedLanguages,WebShop_Id_For_Shipping_Service__c FROM WebStore"
+        },
+        {
+            "operation": "Upsert",
+            "externalId": "Name",
+            "master": true,
+            "query": "SELECT CurrencyIsoCode, Name, Id FROM ProductCatalog"
+        },
+        {
+            "operation": "Upsert",
+            "externalId": "Name",
+            "master": true,
+            "deleteOldData": true,
+            "query": "SELECT External_Id__c, CurrencyIsoCode, Description, IsNavigational, Name, SortOrder, ParentCategoryId, CatalogId, Id FROM ProductCategory"
+        },
+        {
+            "operation": "Upsert",
+            "externalId": "Name",
+            "master": true,
+            "deleteOldData": true,
+            "query": "SELECT CurrencyIsoCode, Description, IsActive, Name, ValidFrom, ValidTo, Id FROM Pricebook2"
+        },
+        {
+            "operation": "Upsert",
+            "externalId": "Pricebook2Id;Product2Id;CurrencyIsoCode",
+            "deleteOldData": true,
+            "query": "SELECT External_Id__c, recommended_Retail_Price__c, CurrencyIsoCode, IsActive, UnitPrice, UseStandardPrice, Pricebook2Id, Product2Id, Id FROM PricebookEntry"
+        },
+        {
+            "operation": "Insert",
+            "master": true,
+            "deleteOldData": true,
+            "query": "SELECT Type,ProductClass,Article_Number__c, Business_Category__c, Collection_Period__c, Color_Code__c, Composition_1__c, Composition_2__c, Composition_3__c, Country_of_Origin__c, EAN_Code__c, External_Id__c, Item_Number__c, Next_Availability_Date__c, Product_Type__c, Stock_Quantity__c, Style__c, Tariff_Code__c, Type__c, CurrencyIsoCode, Description, DisplayUrl, ExternalId, Family, IsActive, Name, ProductCode, QuantityUnitOfMeasure, StockKeepingUnit, Id FROM Product2 order by ProductClass"
+        },
+        {
+            "operation": "Upsert",
+            "externalId": "Name",
+            "deleteOldData": true,
+            "query": "SELECT External_Id__c, External_ProductId__c, CurrencyIsoCode, IsPrimaryCategory, ProductId, ProductCategoryId, Id FROM ProductCategoryProduct"
+        },
+        {
+            "operation": "Upsert",
+            "externalId": "Name",
+            "query": "SELECT Name,CurrencyIsoCode, ProductCatalogId, SalesStoreId, Id FROM WebStoreCatalog"
+        },
+        {
+            "query": "SELECT MasterLabel FROM ProductAttributeSet",
+            "externalId": "DeveloperName",
+            "operation": "Readonly"
+        },
+        {
+            "query": "SELECT Color__c, External_Id__c, External_Variant_Parent_Id__c, External_ProductId__c, Size__c, Sequence, ProductId, VariantParentId FROM ProductAttribute",
+            "deleteOldData": true,
+            "master": false,
+            "operation": "Insert"
+        },
+        {
+            "query": "SELECT External_Id__c, External_ProductId__c, ProductAttributeSetId, ProductId FROM ProductAttributeSetProduct",
+            "deleteOldData": true,
+            "master": false,
+            "operation": "Insert"
+        },
+        {
+            "query": "Select Id,Name,Description,CanViewProduct,CanViewPrice, isActive from CommerceEntitlementPolicy where IsActive = True",
+            "deleteOldData": true,
+            "operation": "Upsert",
+            "externalId": "Name"
+        },
+        {
+            "query": "Select Id,Name,PolicyId,ProductId from CommerceEntitlementProduct order by Product.ProductClass",
+            "deleteOldData": true,
+            "operation": "Upsert",
+            "externalId": "Name"
+        },
+        {
+            "query": "Select Id, BuyerGroupId,Name,WebStoreId from WebStoreBuyerGroup",
+            "deleteOldData": true,
+            "operation": "Upsert",
+            "externalId": "Name"
+        },
+        {
+            "query": "Select Id, WebStoreId,Name,Pricebook2Id,IsActive from WebStorePricebook",
+            "deleteOldData": true,
+            "operation": "Upsert",
+            "externalId": "Name"
+        },
+        {
+            "query": "Select Id, Role,Name,Description,Business_category__c,Discount_Percentage__c from BuyerGroup",
+            "deleteOldData": true,
+            "operation": "Upsert",
+            "externalId": "Name"
+        },
+        {
+            "query": "Select Id,Name,BuyerGroupId,IsActive,Pricebook2Id,Priority from BuyerGroupPricebook",
+            "deleteOldData": true,
+            "operation": "Upsert",
+            "externalId": "Name"
+        },
+        {
+            "query": "Select Id,Name,BuyerGroupId,PolicyId from CommerceEntitlementBuyerGroup",
+            "deleteOldData": true,
+            "operation": "Upsert",
+            "externalId": "Name"
+        }      
+    ],
+    "pollingIntervalMs": 5000,
+    "bulkThreshold": 200,
+    "bulkApiVersion": "1.0",
+    "concurrencyMode": "Serial",
+    "bulkApiV1BatchSize": 9500,
+    "keepObjectOrderWhileExecute": false,
+    "allOrNone": false,
+    "promptOnUpdateError": true,
+    "promptOnMissingParentObjects": false,
+    "promptOnIssuesInCSVFiles": false,
+    "validateCSVFilesOnly": false,
+    "apiVersion": "58.0",
+    "createTargetCSVFiles": true,
+    "importCSVFilesAsIs": false,
+    "alwaysUseRestApiToUpdateRecords": false,
+    "excludeIdsFromCSVFiles": false,
+    "fileLog": true,
+    "allowFieldTruncation": false
+}
